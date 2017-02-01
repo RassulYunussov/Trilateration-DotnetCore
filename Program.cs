@@ -6,8 +6,28 @@ namespace ConsoleApplication
 {
     public class Program
     {
+		public static void GetDistances()
+		{
+			 Point beacon1 = new Point(10.0, 10.0, 10.0);
+			 Point beacon2 = new Point(0.0, 0.0, 0.0);
+			 Point beacon3 = new Point(10.0, 0.0, 0.0);
+			 Point beacon4 = new Point(0.0, 10.0, 0.0);
+ 			 List<Point> points = new List<Point>();
+			 points.Add(beacon1);
+			 points.Add(beacon2);
+			 points.Add(beacon3);
+			 points.Add(beacon4);
+             Point searchPoint = new Point(5.0, 5.0, 5.0);
+
+			 TrilaterationFunction tf = new TrilaterationFunction();
+			 double[] d = tf.CalculateDistances(points,searchPoint);
+			 
+			 System.Console.WriteLine($"{d[0]} {d[1]} {d[2]} {d[3]}");
+		}
         public static void Main(string[] args)
         {
+			GetDistances();
+			/*
             Point beacon1 = new Point(1.0, 1.0, 1.0);
 			Point beacon2 = new Point(3.0, 1.0, 2.0);
 			Point beacon3 = new Point(2.0, 2.0, 1.0);
@@ -38,7 +58,7 @@ namespace ConsoleApplication
 				fixedDistances = tf.GetFixedDistances(distances,calculatedDistances);
 				p = tf.CalculatePosition(points,fixedDistances);
 			}
-
+*/
 			
         }
     }
