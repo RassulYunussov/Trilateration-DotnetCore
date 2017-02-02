@@ -36,7 +36,10 @@ namespace Trilateration
 		{
 			double[] fixedDistances = new double[distances.Length];
 			for(int i = 0;i<distances.Length;i++)
-				fixedDistances[i] = (distances[i]+calculatedDistances[i])/2.0;
+				if(distances[i]>calculatedDistances[i])
+				{
+					fixedDistances[i] = distances[i]-(distances[i]-calculatedDistances[i])/100.0;
+				}
 			return fixedDistances;
 		}
 		private void getMatrixAndVector(List<Point> points,double[]distances, out double[,] m, out double[] b)
